@@ -1,16 +1,8 @@
 var FileHandler = function()
 {
     var handler = this;
-    handler.fileSelect = document.getElementById('fileSelect');
     handler.fileInput = document.getElementById('fileInput');
     handler.thumbsList = document.getElementById('thumbsList');
-
-    handler.fileSelect.addEventListener('click', function(e) {
-        if (handler.fileInput) {
-            handler.fileInput.click();
-        }
-        e.preventDefault();
-    }, false);
 
     handler.fileInput.addEventListener('change', function() {
         handler.handleFiles(handler, this);
