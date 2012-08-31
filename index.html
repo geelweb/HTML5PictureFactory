@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Picture factory, HTML5, canvas, css3 based application</title>
+        <meta charset="utf-8">
+
+        <link type="text/css" rel="stylesheet" href="css/main.css"/>
+        <link type="text/css" rel="stylesheet" href="css/lightbox.css"/>
+
+        <script src="js/CanvasHandler.js"></script>
+        <script src="js/FileHandler.js"></script>
+        <script src="js/CanvasEffect/Sepia.js"></script>
+        <script src="js/CanvasEffect/BlackAndWhite.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Picture factory</h1>
+            <p>Take some pictures, create your own image using them and download it.</p>
+        </div>
+
+        <div class="main-content">
+            <div class="left">
+                <div class="actions">
+                    <h2>Actions</h2>
+                    <div class="actions-content">
+                        <input type="file" id="fileInput" style="visibility: hidden;" accept="image/*">
+                        <button type="button" id="fileSelect">Add a picture</button>
+                        <button type="button" id="btnDownload">Save the picture</button>
+                    </div>
+                </div>
+                <div class="thumbs">
+                    <h2>Thumbs</h2>
+                    <div class="thumbs-content">
+                        <ul id="thumbsList">
+                        </ul>
+                    </div>
+                </div>
+                <div class="effects">
+                    <h2>Effects</h2>
+                    <div class="effects-content">
+                        <button type="buttom" id="btnSepia">Sepia</button>
+                        <button type="buttom" id="btnBandW">Black &amp; White</button>
+                        <button type="button" id="btnNoEffect">No effects</button>
+                    </div>
+                </div>
+            </div>
+            <div class="preview">
+                <h2>Preview</h2>
+                <canvas id="previewCanvas" width="700" height="600">Sorry, your browser does not supports canvas</canvas>
+            </div>
+        </div>
+        <div id="content_ajax"></div>
+
+        <div class="footer">
+            <div class="error"></div>
+            <a href="#about" class="lbLink">about</a> |
+            <a href="#source" class="lbLink">source</a> |
+            <a href="#license" class="lbLink">license</a> |
+            <a href="#browsers" class="lbLink">browsers</a> |
+        </div>
+
+        <div id="about" class="lb">
+            <a href="#close">close</a>
+            <p>This application was developped by Guillaume Luchet &lt;guillaume AT geelweb DOT org&gt;</p>
+            <ul>
+                <li><a href="http://geelweb.org">geelweb.org</a></li>
+                <li>twitter: @gluchet</li>
+            </ul>
+
+            <p>And is based on the following technologies</p>
+            <ul>
+                <li>HTML5</li>
+                <li>css3</li>
+                <li>Javascript</li>
+            </ul>
+        </div>
+
+        <div id="browsers" class="lb">
+            <a href="#close">close</a>
+            <p>
+            Tested on Ubuntu 12.04 with the following browsers
+            <ul>
+                <li>Firefox 15.0</li>
+                <li>Chrome 15.0</li>
+                <li>Opera 12.01</li>
+            </ul>
+            </p>
+        </div>
+
+        <div id="license" class="lb">
+            <a href="#close">close</a>
+            <p>This application and all the source code is released under the
+            <a href="http://opensource.org/licenses/bsd-license.php">BSD License</a>.</p>
+        </div>
+
+        <div id="source" class="lb">
+            <a href="#close">close</a>
+            <p>The sources are availables from github</p>
+        </div>
+
+        <script>
+            window.addEventListener('load', function() {
+                var f = new FileHandler();
+                var c = new CanvasHandler();
+
+                var sepia = new CanvasEffect.Sepia();
+                var bw = new CanvasEffect.BlackAndWhite();
+
+                document.getElementById('btnSepia').addEventListener('click', function() {
+                    c.setEffect(sepia);
+                }, false);
+
+                document.getElementById('btnBandW').addEventListener('click', function() {
+                    c.setEffect(bw);
+                }, false);
+
+                document.getElementById('btnNoEffect').addEventListener('click', function() {
+                    c.removeEffect();
+                }, false);
+            });
+        </script>
+    </body>
+</html>

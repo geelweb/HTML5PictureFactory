@@ -1,0 +1,27 @@
+body {
+    background-color: #3c3b37;
+    color: #fff;
+}
+h1, h2 {
+    color: #6685c2;
+}
+a {
+    color: #ffa500;
+}
+.left {
+    float:left;
+    width: 20%;
+}
+.footer {
+    float:none;
+}
+#previewCanvas {
+    border: 1px solid #9c9898;
+    background-color: #fff;
+}
+ul {
+    list-style-type: none;
+}
+
+
+
